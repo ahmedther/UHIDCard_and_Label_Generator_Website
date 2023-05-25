@@ -1,0 +1,263 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="shortcut icon" href={% static 'UHID_Printer_App/favicon.ico' %} type="image/x-icon">
+    <title>UHID Card Printing Station</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Facebook Opengraph integration: https://developers.facebook.com/docs/sharing/opengraph -->
+    <meta property="og:title" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:description" content="" />
+
+    <!-- Twitter Cards integration: https://dev.twitter.com/cards/  -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:image" content="" />
+
+    <!-- Favicons -->
+    <link href={% static 'UHID_Printer_App/favicon.ico' %} rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
+      rel="stylesheet" />
+
+    <!-- Vendor CSS Files -->
+    <link href={% static 'UHID_Printer_App/aos.css' %} rel="stylesheet" />
+    <link href={% static 'UHID_Printer_App/bootstrap.min.css' %} rel="stylesheet" />
+    <link href={% static 'UHID_Printer_App/bootstrap-icons.css' %} rel="stylesheet" />
+    <link href={% static 'UHID_Printer_App/glightbox.min.css' %} rel="stylesheet" />
+    <link href={% static 'UHID_Printer_App/swiper-bundle.min.css' %} rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href={% static 'UHID_Printer_App/style.css' %} rel="stylesheet" />
+
+    <!-- =======================================================
+  * Template Name: Imperial - v5.7.0
+  * Template URL: https://bootstrapmade.com/imperial-free-onepage-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  </head>
+
+  <body>
+    <nav class="navbar1">
+      <ul class='navbar1-nav'>
+
+        <li class='nav1-logo'>
+          <a href={% url 'index' %} class="nav1-link"><span class='link1-text'><img src={% static 'UHID_Printer_App/logo1.png' %} alt="KDAH Logo"></span> <h3>KDAH</h3></a> 
+        </li>
+
+        <li class='nav1-item'>
+          <a href={% url 'index' %} class="nav1-link"><span class='link1-text'>UHID</span></a>
+        </li>
+
+        <li class='nav1-item'>
+          <div class="nav1-link">
+            <div class='dropdown1' data-dropdown>
+              <button class='dropdown1-button' data-dropdown-button >UHID WITH LOGO</button>
+              <div class='dropdown1-menu'>
+                <a href={% url 'mumbai' %} class="nav1-link"><span class='link1-text'>Mumbai</span></a>
+                <a href={% url 'indore' %} class="nav1-link"><span class='link1-text'>Indore</span></a>
+              </div>
+            </div>
+          </div>
+        </li>
+{% comment %} 
+        <li class='nav1-item'>
+          <a href={% url 'uhid_with_logo' %} class="nav1-link"><span class='link1-text'>UHID WITH LOGO</span></a>
+        </li> {% endcomment %}
+        <li class='nav1-item'>
+          <div class="nav1-link">
+            <div class='dropdown1' data-dropdown>
+              <button class='dropdown1-button' data-dropdown-button >LABEL PRINT</button>
+              <div class='dropdown1-menu'>
+                <a href={% url 'ip_label' %} class="nav1-link"><span class='link1-text'>IP Label</span></a>
+                <a href={% url 'op_label' %} class="nav1-link"><span class='link1-text'>OP Label</span></a>
+                <a href={% url 'both_label' %} class="nav1-link"><span class='link1-text'>Both</span></a>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class='nav1-item'>
+          <a href={% url 'lebel_with_spec' %} class="nav1-link"><span class='link1-text'>LABEL WITH SPECIMEN PRINT</span></a>
+        </li>
+
+      </ul>
+    </nav>
+    <!-- ======= Hero Section ======= -->
+    <form method='POST'>{% csrf_token %}
+      <section id="hero">
+        <div class="hero-container">
+          <div data-aos="fade-in">
+
+
+            <div class="hero-logo">
+              <img class="" src={% static 'UHID_Printer_App/logo_inverted.svg' %} alt="KDAH" />
+            </div>
+            {% if header_text %}
+            <h1>{{ header_text }}</h1>
+            {% endif %}
+
+            
+            <h2>
+              Please Enter
+              <span class="typed" data-typed-items="KH1000484137, UHID Number, With Regards,REDX"></span>
+            </h2>
+
+
+
+            <div class="container">
+
+              <div class="row height d-flex justify-content-center align-items-center">
+
+                <div class="col-md-8">
+
+                  <div class="search">
+                    <i class="fa fa-search"></i>
+                    <input type="text" id="uhid" name="uhid" value="KH1000" minlength="12" maxlength="12" size="30"
+                      style="text-transform:uppercase" placeholder="KH1000484137">
+                    {% if error %}
+                    <div class="alert alert-dark opacity-75" role="alert">
+                      <h4 class="alert-heading">Error!</h4>
+                      <p>{{ error }}</p>
+                      <hr>
+                      <p class="mb-0">Please check the UHID and try again.</p>
+                    </div>
+
+                  </div>
+
+                  {% endif %}
+
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="actions">
+            <button class="btn bg-transparent">
+              <a class="btn-get-started ">Print {% if button_text  %}{{ button_text }} {% endif %}</a> </button>
+            <a href="#services" class="btn-services">Download</a>
+          </div>
+        </div>
+        </div>
+      </section>
+      <!-- End Hero -->
+
+      <!-- ======= Header ======= -->
+      <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+          <a href="index.html" class="logo mr-auto"><img src={% static 'UHID_Printer_App/logo_inverted.svg' %}
+              alt="" /></a>
+          <!-- Uncomment below if you prefer to use a text logo -->
+          <!-- <h1 class="logo mr-auto"><a href="index.html">Imperial</a></h1> -->
+
+          <!-- .navbar -->
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <main id="main">
+        <!-- ======= About Section ======= -->
+
+        <!-- End About Section -->
+
+        <!-- ======= Services Section ======= -->
+
+        <!-- End Services Section -->
+
+        <!-- ======= Subscrbe Section ======= -->
+        <section id="subscribe">
+          <div class="container" data-aos="fade-up">
+            <div class="row">
+              <div class="col-md-8">
+                <h3 class="subscribe-title">!!! Under Construction !!!</h3>
+                <p class="subscribe-text">
+                  Something Awesome here in the future.
+                </p>
+              </div>
+              <div class="col-md-4 subscribe-btn-container">
+                <a class="subscribe-btn" href="#">Coming Soon</a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="progressbar"></div>
+        <div class="scrollPath"></div>
+        <!-- End Subscrbe Section -->
+
+        <!-- ======= Portfolio Section ======= -->
+
+        <!-- End Portfolio Section -->
+
+        <!-- ======= Testimonials Section ======= -->
+
+        <!-- End Testimonials Section -->
+
+        <!-- ======= Team Section ======= -->
+
+        <!-- End Team Section -->
+
+        <!-- ======= Contact Section ======= -->
+
+        <!-- End Contact Section -->
+      </main>
+      <!-- End #main -->
+
+      <!-- ======= Footer ======= -->
+      <footer id="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="copyright">
+                &copy; Copyright <strong>Kokilaben Dhirubhai Ambani Hospital </strong>. All Rights
+                Reserved
+              </div>
+              <div class="credits">
+                <!--
+            All the links in the footer should remain intact.
+            You can delete the links only if you purchased the pro version.
+            Licensing information: https://bootstrapmade.com/license/
+            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Imperial
+          -->
+                Designed & Developed by <a href="https://github.com/ahmedther">Ahmed Qureshi</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- End Footer -->
+
+      <div id="preloader"></div>
+      <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+          class="bi bi-arrow-up-short"></i></a>
+
+      <!-- Vendor JS Files -->
+      <script src={% static 'UHID_Printer_App/aos.js' %}></script>
+      <script src={% static 'UHID_Printer_App/bootstrap.bundle.min.js' %}></script>
+      <script src={% static 'UHID_Printer_App/glightbox.min.js' %}></script>
+      <script src={% static 'UHID_Printer_App/isotope.pkgd.min.js' %}></script>
+      <script src={% static 'UHID_Printer_App/swiper-bundle.min.js' %}></script>
+      <script src={% static 'UHID_Printer_App/typed.min.js' %}></script>
+      <script src={% static 'UHID_Printer_App/validate.js' %}></script>
+
+      <!-- Template Main JS File -->
+      <script src={% static 'UHID_Printer_App/main.js' %}></script>
+  </body>
+
+</html>

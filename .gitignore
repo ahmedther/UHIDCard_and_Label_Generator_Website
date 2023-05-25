@@ -1,0 +1,10 @@
+*.pyc
+*.ps1
+*.pyc/*.pyc/*.pyc
+*.pyc/*.pyc
+*.pyc/*.pyc/*.pyc/*.pyc
+*.pyc/*.pyc/*.pyc/*.pyc/*.pyc
+*.bat
+activate
+*.exe
+
