@@ -267,7 +267,7 @@ def lebel_with_spec(request):
         sup.uhid_validate(uhid, request)
 
         # search and get data from the database
-        patient_details = sup.search_uhid_for_label(uhid)
+        patient_details = sup.search_uhid_for_label_specimen(uhid)
         if not patient_details:
             context[
                 "error"

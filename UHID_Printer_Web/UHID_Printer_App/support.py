@@ -124,7 +124,7 @@ class Support:
         GenerateLabelWithSpecimen(pdf_file_path, patient_details)
         return pdf_file_path
 
-    def search_uhid_for_label(uhid):
+    def search_uhid_for_label_specimen(uhid):
         db = Ora()
         patient_details = db.get_patient_details_for_label_with_specimen(uhid)
         # Data to send on website
