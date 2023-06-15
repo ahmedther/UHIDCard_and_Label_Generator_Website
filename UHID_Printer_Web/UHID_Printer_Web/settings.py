@@ -26,21 +26,17 @@ SECRET_KEY = "django-insecure-%0l)ych_q^&1mg(7qkn0&7%9@z%(xz2ez%b3$9ww0zrmp7nk3l
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = False
+DEBUG = bool(os.getenv("DEBUG", False))
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-    "172.20.200.40",
-    "http://localhost:8003",
-    "http://172.20.200.40:8003",
-    "http://172.20.100.81:8003",
-    "172.20.100.81",
-]
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
+
+CSRF_TRUSTED_ORIGINS = os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    "UHID_Printer_App.apps.UhidPrinterAppConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -137,10 +133,3 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-CSRF_TRUSTED_ORIGINS = [
-    "http://127.0.0.1/",
-    "http://localhost/",
-    "http://172.20.100.81:80",
-    "http://localhost:80",
-]

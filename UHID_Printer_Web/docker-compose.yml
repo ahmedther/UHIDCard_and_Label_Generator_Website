@@ -1,0 +1,29 @@
+version: '3.8'
+
+
+services:
+  app:
+    build: .
+    restart: always
+    image: uhid_label_printer_docker_image
+    container_name: uhid_label_printer_docker_container
+    # command: gunicorn --workers 3 --timeout 86400 --bind 0.0.0.0:8004 uhid_label_printer.wsgi:application
+    volumes:
+      - .:/uhid_label_printer/
+    env_file:
+      - .env
+    ports:
+      - 8000:8000
+
+  nginx:
+    build: 
+      context: ./nginx
+    image: uhid_label_printer_nginx_image
+    container_name: uhid_label_printer_nginx_container
+    restart: always
+    volumes:
+      - ./static:/uhid_label_printer/static
+    env_file:
+      - .env
+    ports:
+      - 8003:8003

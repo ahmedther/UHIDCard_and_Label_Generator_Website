@@ -1,3 +1,4 @@
 Django
 cx-Oracle
 reportlab
+uwsgi

@@ -66,7 +66,9 @@ class GenerateUHIDCard:
             italic="Bookman Old Style Italic",
             boldItalic="Bookman Old Style Bold Italic",
         )
-        pdfmetrics.registerFont(TTFont("Bookman Old Style", "BOOKOSB.TTF"))
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        curret_path = Path(current_dir)
+        pdfmetrics.registerFont(TTFont("Bookman Old Style", f"{curret_path}/static/UHID_Printer_App/BOOKOSB.TTF"))
 
         # Defining Styles
         self.styles = getSampleStyleSheet()
@@ -217,7 +219,9 @@ class GenerateLabel:
             italic="Bookman Old Style Italic",
             boldItalic="Bookman Old Style Bold Italic",
         )
-        pdfmetrics.registerFont(TTFont("Bookman Old Style", "BOOKOSB.TTF"))
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        curret_path = Path(current_dir)
+        pdfmetrics.registerFont(TTFont("Bookman Old Style", f"{curret_path}/static/UHID_Printer_App/BOOKOSB.TTF"))
 
         # Defining Styles
         styles = getSampleStyleSheet()
